@@ -20,3 +20,8 @@ jobs:
         run: npm install
       - name: Run test
         run: npm run test
+      - name: download
+        uses: actions/upload-artifact@v3
+        with:
+          name: Download Artifact
+          path: ./reports/
