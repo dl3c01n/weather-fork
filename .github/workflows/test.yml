@@ -1,19 +1,17 @@
 name: Run test
-on:
-  push:
-    tags:
-      - '1.0.0'
-      - '2.0.0'
-
+on: [push]
 jobs:
   tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [10, 12, 14, 16]
+        app: [1.0.0, 2.0.0]
     steps:
       - name: Get Repo
         uses: actions/checkout@v3
+        with:
+          ref: refs/tags/${{ matrix.app }}
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
