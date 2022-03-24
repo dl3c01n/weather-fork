@@ -4,7 +4,12 @@ jobs:
   Custom-Action:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello
+      - name: Get Repo
+        uses: actions/checkout@v3
+      - name: Diello
+        id: hello
         uses: dl3c01n/customgithubaction@v1
         with:
           name: 'Jean'
+      - name: Get output Diello
+        run: echo "${{ steps.hello.outputs.response }}"
