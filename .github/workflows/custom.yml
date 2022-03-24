@@ -1,0 +1,10 @@
+name: Run test
+on: [push]
+jobs:
+  Custom-Action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        uses: dl3c01n/customgithubaction@v1
+        with:
+          name: 'Jean'
