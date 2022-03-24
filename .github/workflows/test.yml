@@ -1,11 +1,12 @@
 name: Run test
 on: [push]
-strategy:
-  matrix:
-    node: [10, 12, 14, 16]
+
 jobs:
   tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [10, 12, 14, 16]
     steps:
       - name: Get Repo
         uses: actions/checkout@v3
@@ -14,6 +15,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name : Install deps
-        - run: npm install
+        run: npm install
       - name: Run test
-        - run: npm run test
+        run: npm run test
