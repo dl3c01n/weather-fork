@@ -1,5 +1,8 @@
 name: Run test
 on: [push]
+strategy:
+  matrix:
+    node: [10, 12, 14, 16]
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -9,7 +12,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: ${{ matrix.node }}
       - name : Install deps
         - run: npm install
       - name: Run test
